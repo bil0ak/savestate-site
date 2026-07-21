@@ -1,6 +1,7 @@
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import { GitHubIcon } from "@/components/github-icon";
 import { InstallMethods } from "@/components/install-methods";
+import { UninstallMethods } from "@/components/uninstall-methods";
 import { site } from "@/content/site";
 
 export function Install() {
@@ -18,6 +19,7 @@ export function Install() {
               Install Savestate, initialize it in your project, then connect Codex or Claude in one command.
             </p>
             <InstallMethods />
+            <UninstallMethods />
             <div className="mt-6 flex flex-wrap gap-3">
               <a className="button button-primary" href={site.github} target="_blank" rel="noreferrer">
                 <GitHubIcon className="size-4" aria-hidden="true" />

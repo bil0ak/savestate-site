@@ -97,6 +97,11 @@ try {
     if ($PathEntries -notcontains $InstallDirectory) {
         $UpdatedUserPath = if ($UserPath) { "$UserPath;$InstallDirectory" } else { $InstallDirectory }
         [Environment]::SetEnvironmentVariable("Path", $UpdatedUserPath, "User")
+        Set-Content `
+            -LiteralPath (Join-Path $InstallDirectory ".savestate-path-added") `
+            -Value "Savestate added this directory to the user PATH." `
+            -NoNewline `
+            -Encoding Ascii
         Write-Host "Added $InstallDirectory to your user PATH."
     }
 

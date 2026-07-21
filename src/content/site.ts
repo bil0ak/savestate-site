@@ -8,6 +8,9 @@ export const site = {
   curlCommand: "curl -fsSL https://savestatecli.dev/install.sh | sh",
   powershellCommand: "irm https://savestatecli.dev/install.ps1 | iex",
   cargoCommand: "cargo install savestate --locked",
+  uninstallCurlCommand: "curl -fsSL https://savestatecli.dev/uninstall.sh | sh",
+  uninstallPowershellCommand: "irm https://savestatecli.dev/uninstall.ps1 | iex",
+  uninstallCargoCommand: "cargo uninstall savestate",
 } as const;
 
 export const navigation = [

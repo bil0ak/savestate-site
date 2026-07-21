@@ -8,6 +8,20 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/uninstall.sh",
+        destination: "https://github.com/bil0ak/savestate/releases/latest/download/uninstall.sh",
+        permanent: false,
+      },
+      {
+        source: "/uninstall.ps1",
+        destination: "https://github.com/bil0ak/savestate/releases/latest/download/uninstall.ps1",
+        permanent: false,
+      },
+    ];
+  },
   async headers() {
     return [
       {

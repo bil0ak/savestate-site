@@ -6,9 +6,14 @@ import { useState } from "react";
 type CopyCommandProps = {
   command: string;
   className?: string;
+  label?: string;
 };
 
-export function CopyCommand({ command, className = "" }: CopyCommandProps) {
+export function CopyCommand({
+  command,
+  className = "",
+  label = "install command",
+}: CopyCommandProps) {
   const [copied, setCopied] = useState(false);
 
   async function copyCommand() {
@@ -33,7 +38,7 @@ export function CopyCommand({ command, className = "" }: CopyCommandProps) {
         type="button"
         className="copy-button"
         onClick={copyCommand}
-        aria-label={copied ? "Copied install command" : "Copy install command"}
+        aria-label={copied ? `Copied ${label}` : `Copy ${label}`}
       >
         {copied ? <Check aria-hidden="true" /> : <Copy aria-hidden="true" />}
         <span className="sr-only" aria-live="polite">
