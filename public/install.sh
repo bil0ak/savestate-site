@@ -9,6 +9,11 @@ fail() {
   exit 1
 }
 
+case "$INSTALL_DIR" in
+  /*) ;;
+  *) fail "SAVESTATE_INSTALL_DIR must be an absolute path" ;;
+esac
+
 for command in curl tar install uname; do
   command -v "$command" >/dev/null 2>&1 || fail "required command not found: $command"
 done

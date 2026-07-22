@@ -17,6 +17,13 @@ $InstallDirectory = if ($env:SAVESTATE_INSTALL_DIR) {
     Join-Path $env:LOCALAPPDATA "Programs\Savestate\bin"
 }
 
+$DriveRelative = $InstallDirectory -match '^[A-Za-z]:($|[^\\/])'
+$RootRelative = $InstallDirectory -match '^[\\/](?![\\/])'
+if (-not [System.IO.Path]::IsPathRooted($InstallDirectory) -or $DriveRelative -or $RootRelative) {
+    throw "SAVESTATE_INSTALL_DIR must be an absolute path."
+}
+$InstallDirectory = [System.IO.Path]::GetFullPath($InstallDirectory)
+
 $TemporaryId = [guid]::NewGuid().ToString("N")
 $ArchivePath = Join-Path ([System.IO.Path]::GetTempPath()) "savestate-$TemporaryId.zip"
 $ChecksumsPath = Join-Path ([System.IO.Path]::GetTempPath()) "savestate-$TemporaryId-SHA256SUMS"
