@@ -187,6 +187,8 @@ a:focus-visible {
 
 .command-shell {
   display: flex;
+  width: 100%;
+  min-width: 0;
   min-height: 3.45rem;
   align-items: center;
   gap: 0.9rem;
@@ -510,6 +512,10 @@ a:focus-visible {
   padding: clamp(2rem, 6vw, 5rem);
 }
 
+.install-panel > * {
+  min-width: 0;
+}
+
 .install-panel::after {
   position: absolute;
   inset: 0;
@@ -544,6 +550,8 @@ a:focus-visible {
 }
 
 .install-methods {
+  width: 100%;
+  min-width: 0;
   max-width: 38rem;
   margin-top: 2rem;
 }
@@ -627,6 +635,7 @@ a:focus-visible {
 }
 
 .install-method-panel {
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: 0 0.7rem 0.7rem 0.7rem;
   background: rgb(7 12 16 / 72%);
@@ -710,15 +719,71 @@ a:focus-visible {
 }
 
 @media (max-width: 39.99rem) {
-  .checkpoint-visual {
-    width: 46rem;
-    left: 49%;
-    transform: translate(-50%, -50%) scale(0.77);
+  .site-container {
+    width: min(100% - 1.5rem, 86rem);
   }
 
-  .visual-label-agent,
-  .visual-label-restore {
+  .site-header .site-container {
+    height: 4.25rem;
+  }
+
+  .section-shell {
+    padding-block: 4.5rem;
+  }
+
+  .section-heading {
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .checkpoint-visual {
+    left: 50%;
+    width: min(29rem, 118vw);
+    transform: translate(-50%, -50%);
+  }
+
+  .visual-label {
     display: none;
+  }
+
+  .command-shell {
+    gap: 0.6rem;
+    padding-left: 0.75rem;
+  }
+
+  .command-shell code {
+    font-size: 0.75rem;
+  }
+
+  .feature-card {
+    min-height: 13rem;
+    padding: 1.5rem;
+  }
+
+  .feature-card h3 {
+    margin-top: 2rem;
+  }
+
+  .install-panel {
+    gap: 2.5rem;
+    min-height: 0;
+    border-radius: 0.85rem;
+    padding: 1.25rem;
+  }
+
+  .install-tabs {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .install-tab {
+    min-width: 0;
+    padding-inline: 0.6rem;
+  }
+
+  .install-method-panel {
+    border-radius: 0 0 0.7rem 0.7rem;
   }
 }
 

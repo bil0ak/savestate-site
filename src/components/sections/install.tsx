@@ -10,7 +10,7 @@ export function Install() {
       <div className="site-container">
         <div className="install-panel">
           <div className="install-glow" aria-hidden="true" />
-          <div className="relative z-10 max-w-2xl">
+          <div className="relative z-10 min-w-0 max-w-2xl">
             <p className="eyebrow">Install your way</p>
             <h2 className="mt-5 text-[clamp(2.3rem,5vw,4.25rem)] font-semibold leading-[1.02] tracking-[-0.055em] text-white">
               Give your agent an undo button.
@@ -20,20 +20,20 @@ export function Install() {
             </p>
             <InstallMethods />
             <UninstallMethods />
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a className="button button-primary" href={site.github} target="_blank" rel="noreferrer">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a className="button button-primary w-full sm:w-auto" href={site.github} target="_blank" rel="noreferrer">
                 <GitHubIcon className="size-4" aria-hidden="true" />
                 Explore the source
                 <ArrowUpRight className="size-4" aria-hidden="true" />
               </a>
-              <a className="button button-ghost" href={site.docs} target="_blank" rel="noreferrer">
+              <a className="button button-ghost w-full sm:w-auto" href={site.docs} target="_blank" rel="noreferrer">
                 <BookOpen className="size-4" aria-hidden="true" />
                 Read the docs
               </a>
             </div>
           </div>
 
-          <div className="install-terminal" aria-label="Savestate quick start commands">
+          <div className="install-terminal min-w-0" aria-label="Savestate quick start commands">
             <div className="terminal-bar">
               <span className="bg-[#ff6b57]" />
               <span className="bg-[#ffbd2e]" />

@@ -7,8 +7,8 @@ import { site } from "@/content/site";
 export function Hero() {
   return (
     <section id="top" className="hero-section overflow-hidden border-b border-line/80">
-      <div className="site-container relative grid min-h-[calc(100svh-4.75rem)] items-center gap-12 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:py-10">
-        <div className="relative z-10 max-w-[43rem]">
+      <div className="site-container relative grid items-center gap-8 py-12 sm:min-h-[calc(100svh-4.75rem)] sm:gap-12 sm:py-16 lg:grid-cols-[0.9fr_1.1fr] lg:py-10">
+        <div className="relative z-10 min-w-0 max-w-[43rem]">
           <div className="eyebrow mb-7">
             <span className="size-1.5 rounded-full bg-mint shadow-[0_0_14px_#65f2b1]" />
             verified local checkpoints
@@ -42,7 +42,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative -mx-8 min-h-[31rem] sm:mx-0 lg:min-h-[38rem]">
+        <div className="relative min-h-[22rem] sm:min-h-[31rem] lg:min-h-[38rem]">
           <CheckpointVisual />
         </div>
       </div>
