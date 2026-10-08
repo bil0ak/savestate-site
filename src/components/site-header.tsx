@@ -10,7 +10,7 @@ export function SiteHeader() {
           <BrandLogo />
         </a>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="Primary navigation">
           {navigation.map((item) => (
             <a
               key={item.label}

@@ -3,8 +3,9 @@ export const site = {
   url: "https://savestatecli.dev",
   github: "https://github.com/bil0ak/savestate",
   docs: "https://github.com/bil0ak/savestate#documentation",
+  founderUrl: "https://github.com/bil0ak",
   description:
-    "Verified local checkpoints and safe rollback for coding-agent sessions.",
+    "Verified local checkpoints and recovery for Claude Code and Codex. Protect selected project files and local settings around coding-agent sessions.",
   curlCommand: "curl -fsSL https://savestatecli.dev/install.sh | sh",
   powershellCommand: "irm https://savestatecli.dev/install.ps1 | iex",
   cargoCommand: "cargo install savestate --locked",
@@ -16,6 +17,8 @@ export const site = {
 export const navigation = [
   { label: "How it works", href: "#how-it-works", external: false },
   { label: "Safety", href: "#safety", external: false },
+  { label: "Demo", href: "#demo", external: false },
+  { label: "For teams", href: "#teams", external: false },
   { label: "Docs", href: site.docs, external: true },
   { label: "GitHub", href: site.github, external: true },
 ] as const;
@@ -31,7 +34,7 @@ export const workflow = [
     number: "02",
     title: "Let the agent work",
     description: "Use Codex or Claude hooks, or wrap any agent command.",
-    command: "savestate run -- codex",
+    command: "savestate run -- claude",
   },
   {
     number: "03",

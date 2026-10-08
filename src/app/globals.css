@@ -67,9 +67,58 @@ button {
 }
 
 button:focus-visible,
-a:focus-visible {
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
   outline: 2px solid var(--mint);
   outline-offset: 4px;
+}
+
+.demo-video {
+  display: block;
+  width: min(100%, 68rem);
+  margin-inline: auto;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: var(--panel);
+}
+
+.pilot-form {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.pilot-form label {
+  display: grid;
+  gap: 0.55rem;
+  color: var(--foreground);
+  font-size: 0.88rem;
+}
+
+.pilot-form input,
+.pilot-form select,
+.pilot-form textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  background: var(--background);
+  padding: 0.85rem 0.95rem;
+  color: var(--foreground);
+  font: inherit;
+  line-height: 1.5;
+  color-scheme: dark;
+}
+
+.pilot-form textarea {
+  resize: vertical;
+}
+
+.pilot-form input::placeholder,
+.pilot-form textarea::placeholder {
+  color: var(--muted);
 }
 
 .site-container {

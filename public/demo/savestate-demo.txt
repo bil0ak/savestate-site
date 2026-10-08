@@ -1,0 +1,87 @@
+Savestate CLI recovery demonstration
+Recorded CLI output. Scene pacing is edited for readability.
+Shell changes are scripted. No live Claude session or database restore is shown.
+BASELINE_ID names the real checkpoint selected during the exercise.
+
+## Verified local recovery
+$ savestate --version
+savestate 0.1.2
+
+## Initialize a sample development project
+$ savestate init
+✓ Savestate initialized
+Project: ~/savestate-demo
+Store: ~/savestate-demo/.savestate
+✓ Snapshot scope configured
+✓ Local store excluded from Git
+Included ignored state: .env
+
+Next:
+  savestate integrate codex
+  savestate integrate claude
+
+## Install project-local Claude hooks
+$ savestate integrate claude
+✓ Claude integration installed
+Configuration: ~/savestate-demo/.claude/settings.json
+
+Next:
+  1. Open this project in Claude Code
+  2. Start a new session
+  3. Complete a changed turn
+  4. Run savestate doctor after the first completed turn
+
+## Explicitly include a sample ignored setting
+$ cat .savestate.toml
+store = ".savestate"
+respect_gitignore = true
+include = [".env"]
+
+## Capture and verify the baseline
+$ savestate create --label "before the refactor"
+✓ Created 01M4DM33X5APWH5Z50F4K1BBR9 (before the refactor)
+Captured 6 filesystem entries and 0 databases via apfs_clonefile
+
+## Scripted shell changes to real files
+$ printf 'broken application\n' > app.txt
+printf 'FEATURE_MODE=experiment\n' > .env
+printf 'temporary artifact\n' > scratch.txt
+
+
+## Inspect the changed, added, and selected files
+$ savestate diff BASELINE_ID
+Filesystem: +1 -0 ~2
+  + repo:scratch.txt
+  ~ repo:.env
+  ~ repo:app.txt
+
+## Preview the restore
+$ savestate restore BASELINE_ID --dry-run
+Restore: 01M4DM33X5APWH5Z50F4K1BBR9 — +0 -1 ~2 filesystem paths; 0 experimental database resources
+Changed paths:
+  - repo:scratch.txt
+  ~ repo:.env
+  ~ repo:app.txt
+Dry run: no changes made.
+
+## Restore the selected checkpoint
+$ savestate restore BASELINE_ID --yes
+Restore: 01M4DM33X5APWH5Z50F4K1BBR9 — +0 -1 ~2 filesystem paths; 0 experimental database resources
+Changed paths:
+  - repo:scratch.txt
+  ~ repo:.env
+  ~ repo:app.txt
+✓ Created 01M4DM34JHK8N043FF3RG6D3HP (pre-restore:01M4DM33X5APWH5Z50F4K1BBR9)
+Captured 7 filesystem entries and 0 databases via apfs_clonefile+deduplicated
+✓ Restored 01M4DM33X5APWH5Z50F4K1BBR9
+
+## Check the recovered files
+$ cat app.txt .env
+test ! -e scratch.txt && printf 'scratch.txt removed\n'
+working application
+FEATURE_MODE=stable
+scratch.txt removed
+
+## Verify the checkpoint contents
+$ savestate verify BASELINE_ID
+✓ Verified 01M4DM33X5APWH5Z50F4K1BBR9

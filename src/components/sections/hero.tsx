@@ -1,4 +1,5 @@
 import { ArrowRight, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 import { CheckpointVisual } from "@/components/checkpoint-visual";
 import { CopyCommand } from "@/components/copy-command";
 import { GitHubIcon } from "@/components/github-icon";
@@ -17,7 +18,7 @@ export function Hero() {
             Let the agent cook. <span className="text-muted-light">Keep an undo button.</span>
           </h1>
           <p className="mt-7 max-w-[36rem] text-pretty text-base leading-7 text-muted-light sm:text-lg sm:leading-8">
-            Savestate creates verified local checkpoints before coding agents change your project—so you can inspect, restore, and recover safely.
+            Verified checkpoints and recovery for Claude Code and Codex. Capture selected project files and local settings, inspect what changed, and restore when an experiment goes wrong.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -25,10 +26,7 @@ export function Hero() {
               Install Savestate
               <ArrowRight className="size-4" aria-hidden="true" />
             </a>
-            <a href={site.github} target="_blank" rel="noreferrer" className="button button-ghost">
-              <GitHubIcon className="size-4" aria-hidden="true" />
-              View on GitHub
-            </a>
+            <a href="#demo" className="button button-ghost">Watch the demo</a>
           </div>
 
           <CopyCommand command={site.curlCommand} className="mt-6 max-w-[36rem]" />
@@ -39,6 +37,10 @@ export function Hero() {
             <span>Git-aware</span>
             <span aria-hidden="true">·</span>
             <span>macOS · Linux · Windows <span className="text-amber">experimental</span></span>
+          </div>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm">
+            <Link href="/teams" className="text-mint hover:text-mint-bright">Request a team pilot →</Link>
+            <a href={site.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-muted-light hover:text-white"><GitHubIcon className="size-3.5" aria-hidden="true" />Open-source Rust CLI</a>
           </div>
         </div>
 
